@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cake Haven - Cart</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+<h1>Cake Haven</h1>
+<nav>
+<a href="index.html">Home</a>
+<a href="products.html">Cakes</a>
+<a href="cart.html">Cart</a>
+<a href="contact.html">Contact</a>
+</nav>
+</header>
+
+<section style="padding:20px; max-width:800px; margin:auto;">
+<h2>Your Cart</h2>
+<div id="cartItems"></div>
+<h3>Total: ₹<span id="total">0</span></h3>
+<button onclick="checkout()">Checkout</button>
+</section>
+
+<script>
+function displayCart() {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let container = document.getElementById("cartItems");
+  container.innerHTML = "";
+  let total = 0;
+  cart.forEach((item, index) => {
+    container.innerHTML += `<p>${item.name} - ₹${item.price} 
+    <button onclick="removeItem(${index})">Remove</button></p>`;
+    total += item.price;
+  });
+  document.getElementById("total").innerText = total;
+}
+
+function removeItem(index) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  displayCart();
+}
+
+function checkout() {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  if(cart.length === 0) { alert("Cart is empty!"); return; }
+  localStorage.setItem("cart", JSON.stringify([]));
+  window.location.href = "order.html";
+}
+
+displayCart();
+</script>
+
+</body>
+</html>
