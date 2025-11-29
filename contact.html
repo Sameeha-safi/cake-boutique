@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cake Haven - Contact</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+<h1>Cake Haven</h1>
+<nav>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="products.html">Cakes</a>
+<a href="cart.html">Cart</a>
+<a href="contact.html">Contact</a>
+</nav>
+</header>
+
+<section style="padding:50px; max-width:600px; margin:auto;">
+<h2>Contact Us</h2>
+<form onsubmit="submitForm(event)">
+<label>Name:</label><br>
+<input type="text" id="name" required style="width:100%; padding:8px; margin:5px 0;"><br>
+
+<label>Email:</label><br>
+<input type="email" id="email" required style="width:100%; padding:8px; margin:5px 0;"><br>
+
+<label>Message:</label><br>
+<textarea id="message" required style="width:100%; padding:8px; margin:5px 0;"></textarea><br>
+
+<button type="submit">Send Message</button>
+</form>
+</section>
+
+<script>
+function submitForm(event) {
+  event.preventDefault();
+  alert("Thank you, your message has been sent!");
+  document.getElementById("name").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("message").value = "";
+}
+</script>
+
+</body>
+</html>
